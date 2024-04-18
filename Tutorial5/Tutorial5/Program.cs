@@ -13,7 +13,7 @@ builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 
 var app = builder.Build();
 
-app.Configuration.GetConnectionString("Default");
+app.Configuration.GetConnectionString("Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True;Trust Server Certificate=True");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

@@ -19,9 +19,9 @@ public class AnimalsController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAnimals()
+    public IActionResult GetAnimals(string orderBy = null)
     {
-        var animals = _animalRepository.GetAnimals();
+        var animals = _animalRepository.GetAnimals(orderBy);
 
         return Ok(animals);
     }
@@ -31,7 +31,23 @@ public class AnimalsController : ControllerBase
     {
         _animalRepository.AddAnimal(animal);
         
-        // 201
+        // 200
         return Created("/api/animals", null);
+    }
+    [HttpPut("{id}")]
+    public IActionResult PutAnimal(AddAnimal animal,int id)
+    {
+        _animalRepository.PutAnimal(animal,id);
+        
+        // 200
+        return Created("/api/animals/"+id, null);
+    }
+    [HttpDelete("{id}")]
+    public IActionResult DeleteAnimal(int id)
+    {
+        _animalRepository.DeleteAnimal(id);
+        
+        // 200
+        return Created("/api/animals/"+id, null);
     }
 }

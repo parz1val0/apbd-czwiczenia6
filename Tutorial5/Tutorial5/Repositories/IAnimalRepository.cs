@@ -5,6 +5,8 @@ namespace Tutorial5.Repositories;
 
 public interface IAnimalRepository
 {
-    IEnumerable<Animal> GetAnimals();
+    IEnumerable<Animal> GetAnimals(string orderBy);
     void AddAnimal(AddAnimal animal);
+    void PutAnimal(AddAnimal animal, int id);
+    void DeleteAnimal(int id);
 }
